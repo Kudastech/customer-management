@@ -25,7 +25,7 @@ def products(request):
 
 def customer(request, pk_test):
     customers = Customer.objects.get(id=pk_test)
-    orders = customer.order_set.all()
+    orders = customers.order_set.all()
     total_order = Order.objects.count()
     context = {
         'customers':customers,
