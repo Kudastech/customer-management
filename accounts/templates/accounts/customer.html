@@ -28,12 +28,13 @@
             </div>
             <div class="col-12 col-lg-6 col-xl-4 border-light">
                 <div class="card-body">
-                    <h5 class="text-white mb-0"><span class="float-right"><i
-                                class="fa fa-female">null</i></span></h5>
-                    <div class="progress my-3" style="height:3px;">
+                    <!-- <h5 class="text-white mb-0"><span class="float-right"><i
+                                class="fa fa-female">null</i></span></h5> -->
+                    <!-- <div class="progress my-3" style="height:3px;">
                         <div class="progress-bar" style="width:55%"></div>
-                    </div>
-                    <p class="mb-0 text-white small-font">-----</p>
+                    </div> -->
+                    <p class="mb-0 text-white small-font"><a href="">View order</a></p>
+                    <p class="mb-0 text-white small-font"><a href="{% url 'create-order' customers.id %}">Place order</a></p>
                 </div>
             </div>
         </div>
@@ -45,14 +46,19 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-body">
+            <div class="row" >
+                <form method="get" style="display:flex;">
+                   {{ filters.form }}
+                   <button type="submit">Search</button>
+                </form>
+            </div>
           <h5 class="card-title">Customer Information</h5>
           <div class="table-responsive">
             <table class="table">
               <thead>
                 <tr>
-                  <th scope="col">ID</th>
                   <th scope="col">Name</th>
-                  <th scope="col">Phone Number</th>
+                  <th scope="col">Note</th>
                   <th scope="col">Date Ordered</th>
                   <th scope="col">Status</th>
                   <th scope="col">Update</th>
@@ -62,13 +68,12 @@
               <tbody>
                 {% for order in orders %}
                 <tr>
-                    <th scope="row">1</th>
                     <td>{{order.product}}</td>
-                    <td>{{order.product.catergory}}</td>
+                    <td>{{order.note}}</td>
                     <td>{{order.date_created}}</td>
                     <td>{{order.status}}</td>
                     <td><a class="btn btn-sm btn-info" href="{% url 'update-order' order.id %}">Update</a></td>
-                    <td><a class="btn btn-sm btn-danger" href=""></a>Delete</td>
+                    <td><a class="btn btn-sm btn-danger" href="{% url 'delete-order' order.id %}">Delete</a></td>
                   </tr>
                 {% endfor %}
               </tbody>

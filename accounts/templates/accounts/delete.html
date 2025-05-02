@@ -1,0 +1,14 @@
+{% extends 'accounts/layouts/app.html'%}
+
+{% block content %}
+
+<p>Are you sure you want to delete this "{{item}}"?</p>
+
+<form action="{% url 'delete-order' item.id %}" method="POST">
+    {% csrf_token %}
+    <a href="{% url 'home' %}">Cancel</a>
+   <button type="submit">Submit</button>
+
+</form>
+
+{% endblock%}

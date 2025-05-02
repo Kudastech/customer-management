@@ -13,22 +13,21 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Product</th>
+                  <th scope="col">Product Name</th>
                   <th scope="col">Catergory</th>
                   <th scope="col">Status</th>
-               
                 </tr>
               </thead>
               <tbody>
-                  <tr>
                   {% for product in products %}
-
+                  <tr>
+                    <th></th>
                  <td> {{product.name}} </td>
                  <td> {{product.catergory}} </td>
                  <td> {{product.price}} </td>
-                 
-                  {% endfor %}
+
                 </tr>
+                {% endfor %}
             
               </tbody>
             </table>

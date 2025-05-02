@@ -1,7 +1,18 @@
 from django.shortcuts import render, redirect
+from django.forms import inlineformset_factory
 from django.http import HttpResponse
+from django.contrib.auth.forms import UserCreationForm
 from .models import *
 from .form import OrderForm
+from .filter import orderFilter
+
+
+def register(request):
+    return render(request, 'accounts/auth/register.html')
+
+def login(request):
+    return render(request, 'accounts/auth/login.html')
+
 
 def home(request):
     orders = Order.objects.all()
@@ -28,23 +39,34 @@ def customer(request, pk_test):
     customers = Customer.objects.get(id=pk_test)
     orders = customers.order_set.all()
     total_order = Order.objects.count()
+    filters = orderFilter(request.GET, queryset= orders)
+    orders = filters.qs
     context = {
         'customers':customers,
         'orders': orders,
-        'total_order':total_order
+        'total_order':total_order,
+        'filters':filters
     }
     return render( request, "accounts/customer.html", context)
 
-def createOrder(request):
-
-    form = OrderForm()
+def createOrder(request,pk):
+    OrderFormSet = inlineformset_factory(Customer, Order, fields=('product', 'status'), extra=1)
+    customer = Customer.objects.get(id=pk)
+    formset = OrderFormSet(queryset = Order.objects.none(), instance= customer)
+    # form = OrderForm(initial={'customer': customer})
     if request.method == "POST":
-        form = OrderForm(request.POST)
-        if form.is_valid():
-            form.save()
+        formset = OrderFormSet(request.POST, instance= customer)
+        # form = OrderForm(request.POST)
+        if formset.is_valid():
+            formset.save()
             return redirect('/')
+    #     else:
+    #         # Debugging: Print formset errors to console or log them
+    #         print(formset.errors)
+    # else:
+    #     formset = OrderFormSet(instance=customer)
     context = {
-        'form':form
+        'formset':formset
     }
     return render(request, 'accounts/order-form.html', context)
 
@@ -61,5 +83,17 @@ def updateOrder(request, pk):
             'form':form
         }
     return render(request, 'accounts/order-form.html', context)
+
+def deleteOrder(request, pk):
+    order = Order.objects.get(id=pk)
+    if request.method == "POST":
+        order.delete()
+        return redirect('/')
+    context = {
+        'item':order
+    }
+    return render(request, 'accounts/order-form.html', context)
+
+
 
 # Create your views here.

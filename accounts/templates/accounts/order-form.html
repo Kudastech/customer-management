@@ -13,37 +13,35 @@
               <hr>
               <form method="post" action="">
                 {% csrf_token %}
-                {{form}}
-                <!-- <div class="form-group">
-                  <label for="input-1">Name</label>
-                  <input type="text" class="form-control" id="input-1" placeholder="Enter Your Name">
-                </div>
+                <!-- Management form (required for formsets) -->
+                {{ formset.management_form }}
+                
+                <!-- Display formset errors -->
+                <!-- {% if formset.errors %}
+                    <div class="alert alert-danger">
+                        <ul>
+                            {% for form in formset %}
+                                {% for error in form.errors %}
+                                    <li>{{ error }}</li>
+                                {% endfor %}
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %} -->
+
+                <!-- Render each form in the formset -->
+                {% for form in formset %}
+                    <div class="form-group">
+                        {{ form }} <!-- Render form fields as paragraphs -->
+                    </div>
+                {% endfor %}
+
                 <div class="form-group">
-                  <label for="input-2">Email</label>
-                  <input type="text" class="form-control" id="input-2" placeholder="Enter Your Email Address">
+                    <button type="submit" class="btn btn-light px-5">
+                        <i class="icon-lock"></i> Submit
+                    </button>
                 </div>
-                <div class="form-group">
-                  <label for="input-3">Mobile</label>
-                  <input type="text" class="form-control" id="input-3" placeholder="Enter Your Mobile Number">
-                </div>
-                <div class="form-group">
-                  <label for="input-4">Password</label>
-                  <input type="text" class="form-control" id="input-4" placeholder="Enter Password">
-                </div>
-                <div class="form-group">
-                  <label for="input-5">Confirm Password</label>
-                  <input type="text" class="form-control" id="input-5" placeholder="Confirm Password">
-                </div>
-                <div class="form-group py-2">
-                  <div class="icheck-material-white">
-                    <input type="checkbox" id="user-checkbox1" checked="" />
-                    <label for="user-checkbox1">I Agree Terms & Conditions</label>
-                  </div> -->
-                </div>
-                <div class="form-group">
-                  <button type="submit" class="btn btn-light px-5"><i class="icon-lock"></i> Register</button>
-                </div>
-              </form>
+            </form>
             </div>
           </div>
         </div>

@@ -102,12 +102,11 @@
                             <tr>
                                 <th scope="row">1</th>
                                 <td>{{order.product}}</td>
-                                <td>{{order.catergory}}</td>
+                                <td>{{order.product.catergory}}</td>
                                 <td>{{order.date_created}}</td>
                                 <td>{{order.status}}</td>
-                                <td><a class="btn btn-primary" href=""></a></td>
-                                <td><a class="btn btn-danger" href=""></a></td>
-
+                                <td><a class="btn btn-sm btn-info" href="{% url 'update-order' order.id %}">Update</a></td>
+                                <td><a class="btn btn-sm btn-danger" href="{% url 'delete-order' order.id %}">Delete</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
