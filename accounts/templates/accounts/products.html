@@ -20,12 +20,15 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">1</th>
-                  <td>Cell</td>
-                  <td>Cell</td>
-                  <td>Cell</td>
-        </tr>
+                  <tr>
+                  {% for product in products %}
+
+                 <td> {{product.name}} </td>
+                 <td> {{product.catergory}} </td>
+                 <td> {{product.price}} </td>
+                 
+                  {% endfor %}
+                </tr>
             
               </tbody>
             </table>

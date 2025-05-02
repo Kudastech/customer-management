@@ -13,25 +13,18 @@
               <thead>
                 <tr>
                   <th scope="col">ID</th>
-                  <th scope="col">Product</th>
-                  <th scope="col">Catergory</th>
-                  <th scope="col">Date Ordered</th>
-                  <th scope="col">Status</th>
-                  <th scope="col">Update</th>
-                  <th scope="col">Remove</th>
-
-                  
-               
+                  <th scope="col">Name</th>
+                  <th scope="col">Phone Number</th>
                 </tr>
               </thead>
               <tbody>
+                {% for customer in customers %}
                 <tr>
-                  <th scope="row">1</th>
-                  <td>Cell</td>
-                  <td>Cell</td>
-                  <td>Cell</td>
-        </tr>
-            
+                    <th scope="row">1</th>
+                    <td>{{customer.name}}</td>
+                    <td>{{customer.phone}}</td>
+                  </tr>
+                {% endfor %}
               </tbody>
             </table>
           </div>
