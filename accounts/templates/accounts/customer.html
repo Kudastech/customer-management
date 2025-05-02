@@ -2,6 +2,44 @@
 
 {% block content %}
 
+<div class="card mt-3">
+    <div class="card-content">
+        <div class="row row-group m-0">
+            <div class="col-12 col-lg-6 col-xl-4 border-light">
+                <div class="card-body">
+                    <h5 class="text-white mb-0">{{total_order}} <span class="float-right"><i
+                                class="fa fa-male"></i></span>
+                    </h5>
+                    <div class="progress my-3" style="height:3px;">
+                        <div class="progress-bar" style="width:55%"></div>
+                    </div>
+                    <p class="mb-0 text-white small-font">Total Order </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-4 border-light">
+                <div class="card-body">
+                    <h5 class="text-white mb-0"> <span class="float-right"><i
+                                class="fa fa-female"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                        <div class="progress-bar" style="width:55%"></div>
+                    </div>
+                    <p class="mb-0 text-white small-font">Customer Contact </p>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6 col-xl-4 border-light">
+                <div class="card-body">
+                    <h5 class="text-white mb-0"><span class="float-right"><i
+                                class="fa fa-female">null</i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                        <div class="progress-bar" style="width:55%"></div>
+                    </div>
+                    <p class="mb-0 text-white small-font">-----</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="row">
 
     <div class="col-lg-12">
@@ -15,14 +53,22 @@
                   <th scope="col">ID</th>
                   <th scope="col">Name</th>
                   <th scope="col">Phone Number</th>
+                  <th scope="col">Date Ordered</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Update</th>
+                  <th scope="col">Remove</th>
                 </tr>
               </thead>
               <tbody>
-                {% for customer in customers %}
+                {% for order in orders %}
                 <tr>
                     <th scope="row">1</th>
-                    <td>{{customer.name}}</td>
-                    <td>{{customer.phone}}</td>
+                    <td>{{order.product}}</td>
+                    <td>{{order.product.catergory}}</td>
+                    <td>{{order.date_created}}</td>
+                    <td>{{order.status}}</td>
+                    <td><a class="btn btn-sm btn-info" href="">Update</a></td>
+                    <td><a class="btn btn-sm btn-danger" href=""></a>Delete</td>
                   </tr>
                 {% endfor %}
               </tbody>

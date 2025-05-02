@@ -4,114 +4,118 @@
 
 <div class="card mt-3">
     <div class="card-content">
-      <div class="row row-group m-0">
-        <div class="col-12 col-lg-6 col-xl-3 border-light">
-          <div class="card-body">
-            <h5 class="text-white mb-0">{{total_order}} <span class="float-right"><i class="fa fa-male"></i></span>
-            </h5>
-            <div class="progress my-3" style="height:3px;">
-              <div class="progress-bar" style="width:55%"></div>
+        <div class="row row-group m-0">
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                    <h5 class="text-white mb-0">{{total_order}} <span class="float-right"><i
+                                class="fa fa-male"></i></span>
+                    </h5>
+                    <div class="progress my-3" style="height:3px;">
+                        <div class="progress-bar" style="width:55%"></div>
+                    </div>
+                    <p class="mb-0 text-white small-font">Total Order </p>
+                </div>
             </div>
-            <p class="mb-0 text-white small-font">Total Order </p>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6 col-xl-3 border-light">
-          <div class="card-body">
-            <h5 class="text-white mb-0">{{total_customer}}  <span class="float-right"><i class="fa fa-female"></i></span></h5>
-            <div class="progress my-3" style="height:3px;">
-              <div class="progress-bar" style="width:55%"></div>
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                    <h5 class="text-white mb-0">{{total_customer}} <span class="float-right"><i
+                                class="fa fa-female"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                        <div class="progress-bar" style="width:55%"></div>
+                    </div>
+                    <p class="mb-0 text-white small-font">Total Customer </p>
+                </div>
             </div>
-            <p class="mb-0 text-white small-font">Total Customer </p>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6 col-xl-3 border-light">
-          <div class="card-body">
-            <h5 class="text-white mb-0">{{order_pending}} <span class="float-right"><i class="fa fa-female"></i></span></h5>
-            <div class="progress my-3" style="height:3px;">
-              <div class="progress-bar" style="width:55%"></div>
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                    <h5 class="text-white mb-0">{{order_pending}} <span class="float-right"><i
+                                class="fa fa-female"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                        <div class="progress-bar" style="width:55%"></div>
+                    </div>
+                    <p class="mb-0 text-white small-font">Total Order Pending</p>
+                </div>
             </div>
-            <p class="mb-0 text-white small-font">Total Order Pending</p>
-          </div>
-        </div>
-        <div class="col-12 col-lg-6 col-xl-3 border-light">
-          <div class="card-body">
-            <h5 class="text-white mb-0">{{order_delivered}} <span class="float-right"><i class="fa fa-male"></i></span></h5>
-            <div class="progress my-3" style="height:3px;">
-              <div class="progress-bar" style="width:55%"></div>
+            <div class="col-12 col-lg-6 col-xl-3 border-light">
+                <div class="card-body">
+                    <h5 class="text-white mb-0">{{order_delivered}} <span class="float-right"><i
+                                class="fa fa-male"></i></span></h5>
+                    <div class="progress my-3" style="height:3px;">
+                        <div class="progress-bar" style="width:55%"></div>
+                    </div>
+                    <p class="mb-0 text-white small-font">Total Order Delivered </p>
+                </div>
             </div>
-            <p class="mb-0 text-white small-font">Total Order Delivered </p>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-  <div class="row">
+<div class="row">
 
     <div class="col-lg-4">
-      <div class="card">
-        <div class="card-body">
-          <h5 class="card-title">Customer Details </h5>
-          <div class="table-responsive">
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Phone Number</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {% for customer in customers %}
-                  <tr>
-                      <th scope="row">1</th>
-                      <td>{{customer.name}}</td>
-                      <td>{{customer.phone}}</td>
-                    </tr>
-                  {% endfor %}
-                </tbody>
-              </table>
-          </div>
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Customer Details </h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Phone Number</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for customer in customers %}
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{customer.name}}</td>
+                                <td>{{customer.phone}}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
     <div class="col-lg-8">
         <div class="card">
-          <div class="card-body">
-            <h5 class="card-title">Orders</h5>
-            <div class="table-responsive">
-              <table class="table">
-                  <thead>
-                      <tr>
-                          <th scope="col">ID</th>
-                          <th scope="col">Product</th>
-                          <th scope="col">Catergory</th>
-                          <th scope="col">Date Ordered</th>
-                          <th scope="col">Status</th>
-                          <th scope="col">Update</th>
-                          <th scope="col">Remove</th>
-                        </tr>
-                  </thead>
-                  <tbody>
-                    {% for order in orders %}
-                    <tr>
-                        <th scope="row">1</th>
-                        <td>{{order.product}}</td>
-                        <td>{{order.catergory}}</td>
-                        <td>{{order.date_created}}</td>
-                        <td>{{order.status}}</td>
-                        <td><a class="btn btn-primary" href=""></a></td>
-                        <td><a class="btn btn-danger" href=""></a></td>
-  
-                      </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-             
+            <div class="card-body">
+                <h5 class="card-title">Orders</h5>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th scope="col">ID</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Catergory</th>
+                                <th scope="col">Date Ordered</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">Update</th>
+                                <th scope="col">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for order in orders %}
+                            <tr>
+                                <th scope="row">1</th>
+                                <td>{{order.product}}</td>
+                                <td>{{order.catergory}}</td>
+                                <td>{{order.date_created}}</td>
+                                <td>{{order.status}}</td>
+                                <td><a class="btn btn-primary" href=""></a></td>
+                                <td><a class="btn btn-danger" href=""></a></td>
+
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
-          </div>
         </div>
-      </div>
-  </div><!--End Row-->
+    </div>
+</div><!--End Row-->
 
 {% endblock%}

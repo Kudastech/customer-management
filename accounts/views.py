@@ -19,13 +19,20 @@ def home(request):
     }
     return render(request, 'accounts/dashboard.html', context )
 
-def product(request):
+def products(request):
     products = Product.objects.all()
     return render(request, "accounts/products.html", {'products':products})
 
-def customer(request):
-    customers = Customer.objects.all()
-    return render( request, "accounts/customer.html", {'customers' : customers})
+def customer(request, pk_test):
+    customers = Customer.objects.get(id=pk_test)
+    orders = customer.order_set.all()
+    total_order = Order.objects.count()
+    context = {
+        'customers':customers,
+        'orders': orders,
+        'total_order':total_order
+    }
+    return render( request, "accounts/customer.html", context)
 
 
 # Create your views here.
