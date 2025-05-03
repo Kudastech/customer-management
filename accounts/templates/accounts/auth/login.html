@@ -36,41 +36,56 @@
             <img src="{% static '/assets/images/logo-icon.png' %}" alt="logo icon">
           </div>
           <div class="card-title text-uppercase text-center py-3">Sign In</div>
-          <form>
+          <form method="post">
+            {% csrf_token %}
             <div class="form-group">
-              <label for="exampleInputUsername" class="sr-only">Username</label>
+              <label for="id_username" class="sr-only">Username</label>
               <div class="position-relative has-icon-right">
-                <input type="text" id="exampleInputUsername" class="form-control input-shadow"
-                  placeholder="Enter Username">
+                <input type="text" id="id_username" name="username" class="form-control input-shadow"
+                  placeholder="Enter Username" value="{{ form.username.value }}" >
                 <div class="form-control-position">
                   <i class="icon-user"></i>
                 </div>
               </div>
+              {% if form.username.errors %}
+              <div class="text-danger">{{ form.username.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword" class="sr-only">Password</label>
+              <label for="id_password" class="sr-only">Password</label>
               <div class="position-relative has-icon-right">
-                <input type="password" id="exampleInputPassword" class="form-control input-shadow"
+                <input type="password" id="id_password" name="password" class="form-control input-shadow"
                   placeholder="Enter Password">
                 <div class="form-control-position">
                   <i class="icon-lock"></i>
                 </div>
               </div>
+              {% if form.password.errors %}
+              <div class="text-danger">{{ form.password.errors }}</div>
+              {% endif %}
             </div>
             <div class="form-row">
               <div class="form-group col-6">
                 <div class="icheck-material-white">
-                  <input type="checkbox" id="user-checkbox" checked="" />
-                  <label for="user-checkbox">Remember me</label>
+                  <input type="checkbox" id="id_remember" name="remember" checked="" />
+                  <label for="id_remember">Remember me</label>
                 </div>
               </div>
               <div class="form-group col-6 text-right">
-                <a href="reset-password.html">Reset Password</a>
+                <a href="">Reset Password</a>
               </div>
             </div>
-            <button type="button" class="btn btn-light btn-block">Sign In</button>
+            <button type="submit" class="btn btn-light btn-block">Sign In</button>
 
-
+            {% if messages %}
+            <div class="messages mt-3">
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+              </div>
+              {% endfor %}
+            </div>
+            {% endif %}
           </form>
         </div>
       </div>
@@ -83,11 +98,9 @@
     <a href="javaScript:void();" class="back-to-top"><i class="fa fa-angle-double-up"></i> </a>
     <!--End Back To Top Button-->
 
-
-
   </div><!--wrapper-->
 
- 
+
   {% include 'accounts/includes/script.html'%}
 
 </body>
